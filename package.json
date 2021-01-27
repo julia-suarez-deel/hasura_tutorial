@@ -1,0 +1,19 @@
+{
+  "name": "hasura-guide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "database:clone": "git clone https://github.com/devrimgunduz/pagila.git database",
+    "up": "docker-compose up -d",
+    "down": "docker-compose down",
+    "start": "docker-compose start",
+    "stop": "docker-compose stop"
+  },
+  "keywords": [],
+  "author": "Julia Suárez <ju.threw@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "hasura-cli": "^1.3.3"
+  }
+}
