@@ -1,3 +1,4 @@
 database
 .idea
 node_modules
+firebase-credentials.json
