@@ -1,7 +1,9 @@
+const firebaseAdmin = require("firebase-admin");
+
 const getUserHasuraClaims = ({user, role}) => ({
   "https://hasura.io/jwt/claims": {
     "x-hasura-default-role": role,
-    "x-hasura-allowed-roles": ["user", "admin"],
+    "x-hasura-allowed-roles": ["staff", "customer"],
     "x-hasura-user-id": user.uid,
     "x-hasura-user-email": user.email,
   }

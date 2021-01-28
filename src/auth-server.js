@@ -1,12 +1,11 @@
-import {setUserHasuraClaim} from "./utils/hasura-claim";
-
 require('dotenv').config();
-const express = require('express');
-const expressHandleBars  = require('express-handlebars');
 const firebase = require("firebase");
 require("firebase/auth");
 const firebaseAdmin = require("firebase-admin");
 const firebaseConfig = require("../firebase-config.json");
+const express = require('express');
+const expressHandleBars  = require('express-handlebars');
+const {setUserHasuraClaim} = require("./utils/hasura-claim");
 const {AUTH_SERVER_PORT = '3005'} = process.env;
 
 firebaseAdmin.initializeApp({
@@ -20,17 +19,17 @@ app.engine('handlebars', expressHandleBars({defaultLayout: false}));
 app.set('view engine', 'handlebars');
 
 const USERS = {
-  admin: {
-    email: 'admin@example.com',
-    password: 'admin123456'
+  staff: {
+    email: 'staff@example.com',
+    password: 'staff123456'
   },
-  user: {
-    email: 'user@example.com',
-    password: 'user123456'
+  customer: {
+    email: 'customer@example.com',
+    password: 'customer123456'
   }
 };
 
-app.get('/:role(admin|user)', async (req, res) => {
+app.get('/:role(staff|customer)', async (req, res) => {
   const {role} = req.params;
   const {email, password} = USERS[role];
   await setUserHasuraClaim({role, email});
@@ -45,8 +44,8 @@ app.get('/:role(admin|user)', async (req, res) => {
 app.listen(AUTH_SERVER_PORT, () => {
   console.log(
     `Server listening
-     Get an admin JWT at http://localhost:${AUTH_SERVER_PORT}/admin
-     Get an user JWT at http://localhost:${AUTH_SERVER_PORT}/user
+     Get an staff JWT at http://localhost:${AUTH_SERVER_PORT}/staff
+     Get an customer JWT at http://localhost:${AUTH_SERVER_PORT}/customer
      `
     )
 });
