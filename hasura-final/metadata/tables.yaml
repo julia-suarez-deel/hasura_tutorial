@@ -138,19 +138,54 @@
         table:
           schema: public
           name: rental
-- table:
-    schema: public
-    name: customer_list
+  select_permissions:
+  - role: customer
+    permission:
+      columns:
+      - activebool
+      - address_id
+      - customer_id
+      - email
+      - first_name
+      - last_name
+      filter:
+        _and:
+        - active:
+            _eq: 1
+        - email:
+            _eq: X-Hasura-User-Email
+      allow_aggregations: true
+  event_triggers:
+  - name: ON_CUSTOMER_UPDATE
+    definition:
+      enable_manual: false
+      update:
+        columns:
+        - activebool
+        - create_date
+        - active
+        - address_id
+        - customer_id
+        - store_id
+        - email
+        - first_name
+        - last_name
+        - last_update
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{HASURA_CUSTOM_API_URL}}/trigger'
 - table:
     schema: public
     name: film
   object_relationships:
   - name: language
     using:
-      foreign_key_constraint_on: original_language_id
-  - name: languageByLanguageId
-    using:
       foreign_key_constraint_on: language_id
+  - name: languageByOriginalLanguageId
+    using:
+      foreign_key_constraint_on: original_language_id
   array_relationships:
   - name: film_actors
     using:
@@ -372,6 +407,22 @@
         table:
           schema: public
           name: payment_p2020_06
+  select_permissions:
+  - role: customer
+    permission:
+      columns:
+      - customer_id
+      - inventory_id
+      - last_update
+      - rental_date
+      - rental_id
+      - return_date
+      - staff_id
+      filter:
+        customer:
+          email:
+            _eq: X-Hasura-User-Email
+      allow_aggregations: true
 - table:
     schema: public
     name: sales_by_film_category

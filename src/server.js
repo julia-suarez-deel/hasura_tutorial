@@ -1,18 +1,20 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
+app.use(bodyParser.json());
+
 app.all('/action', (req, res) => {
   res.json({
-    message: `Hello from action! ${req.input.name}`,
-    payload: req.payload
+    greeting: `Greetings, ${req.body.input.name}! Have a nice day`,
   });
 });
 
 app.all('/trigger', (req, res) => {
   res.json({
     message: `Hello from trigger!`,
-    payload: req.payload
+    payload: req.body
   });
 });
 

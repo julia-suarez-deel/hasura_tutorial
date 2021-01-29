@@ -33,6 +33,7 @@ services:
       HASURA_GRAPHQL_JWT_SECRET: '{"type":"RS256", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com"}'
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: admin
       HASURA_GRAPHQL_DEV_MODE: 'true'
+      HASURA_CUSTOM_API_URL: ${HASURA_CUSTOM_API_URL}
 
 volumes:
   data:

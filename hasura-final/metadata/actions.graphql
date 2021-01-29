@@ -1,0 +1,13 @@
+type Mutation {
+  greeting (
+    name: String!
+  ): GreetingResponse
+}
+
+
+
+
+type GreetingResponse {
+  greeting : String!
+}
+
