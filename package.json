@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/auth-server.js",
     "database:clone": "git clone https://github.com/devrimgunduz/pagila.git database",
     "server:start": "node src/server.js",
     "server:authentication:start": "node src/auth-server.js"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "keywords": [],
   "author": "Julia Suárez <ju.threw@gmail.com>",
