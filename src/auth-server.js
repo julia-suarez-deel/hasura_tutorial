@@ -7,7 +7,7 @@ const express = require('express');
 const expressHandleBars = require('express-handlebars');
 const {getFirebaseDecodedCredential} = require("./utils/firebase");
 const {setUserHasuraClaim} = require("./utils/hasura-claim");
-const {AUTH_SERVER_PORT = '3005'} = process.env;
+const {PORT = '3005'} = process.env;
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(getFirebaseDecodedCredential()),
@@ -42,11 +42,11 @@ app.get('/:role(staff|customer)', async (req, res) => {
   });
 });
 
-app.listen(AUTH_SERVER_PORT, () => {
+app.listen(PORT, () => {
   console.log(
     `Server listening
-     Get an staff JWT at http://localhost:${AUTH_SERVER_PORT}/staff
-     Get an customer JWT at http://localhost:${AUTH_SERVER_PORT}/customer
+     Get an staff JWT at http://localhost:${PORT}/staff
+     Get an customer JWT at http://localhost:${PORT}/customer
      `
   )
 });
