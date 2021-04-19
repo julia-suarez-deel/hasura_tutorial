@@ -41,3 +41,5 @@ Config file for the `auth-server.js` since it runs the firebase javascript SDK t
 
 ## .env
 This file has the environment variables used in the docker-compose file, in other words, it has the database connection details, the Hasura ports, and admin secret passwords, anytime you need to see a parameter take a look at this file.
+
+> NOTE: Usually `.env` files shouldn't be added to a repository since they should be overwritten in the desired environment but for simplicity of this tutorial I included the file in the repository to enhance the development experience, be aware of this notice when you are building your actual project.
