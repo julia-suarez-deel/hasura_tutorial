@@ -2,4 +2,5 @@ database
 .idea
 node_modules
 firebase-credentials.json
+firebase-config.json
 hasura-tutorial

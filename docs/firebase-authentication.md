@@ -13,8 +13,9 @@ This is how you can create your own firebase project and use it with the `auth-s
    ![Firebase sample user list](images/firebase-users.png)
 5. Go to  `Project settings` > `Service accounts` > `Generate new private key`
    ![Firebase generate private key](images/firebase-project-settings.png)
-6. You will get a JSON file, copy it in the root of the project and rename it to `firebase-credentials.json`
-7. Run `npm run server:authentication:start` and you will see the following in the console
+6. Go to `Project settings` > `Your apps` > `Add app` then select the icon with the `</>` which means `web app`, put any name you like and copy the firebase config to a `firebase-config.json` file at the root of the project
+7. You will get a JSON file, copy it in the root of the project and rename it to `firebase-credentials.json`
+8. Run `npm run server:authentication:start` and you will see the following in the console
 ![img.png](images/auth-server-start-output.png)
 
 If you visit either of the URL provided you will see the following
